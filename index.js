@@ -28,6 +28,9 @@ function addTaskFunc(){
     const iconDelete = document.createElement("i");
     iconDelete.classList.add("fas", "fa-trash");
     icons[i++].append(iconDelete);
+
+    iconDelete.addEventListener("click", () => console.log("Eliminando"));
+
     input.value = "";
 
   }
