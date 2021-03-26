@@ -1,0 +1,131 @@
+:root{
+  --color-brown: #6C464E;
+  --color-green-dark: #32A287;
+  --color-green2: #44CF6C;
+  --color-green3: #A9FDAC;
+  --color-green-light: #F1FFE7;
+  --font-main: 'Dosis', sans-serif;
+  --font-auxiliar: 'Source Serif Pro', serif;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--color-brown);
+}
+
+header{
+  display: flex;
+  width: 100%;
+  height: 102px;
+  margin-bottom: 32px;
+  background-color: var(--color-green-dark);
+}
+
+main{
+  margin: auto;
+  max-width: 650px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+h1{
+  margin: auto;
+  color: var(--color-brown);
+  font-family: var(--font-main);
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+#error{
+  font-size: 2rem;
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #E75656;
+}
+
+.hide{
+  display: none;
+}
+
+#input-task{
+  width: 80%;
+  height: 18px;
+  max-width: 400px;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: none;
+  background-color: var(--color-green-light);
+  border-radius: 8px;
+  outline: none;
+  color: var(--color-brown);
+}
+
+#add-task{
+  padding: 10px 50px;
+  margin-bottom: 40px;
+  margin-left: 16px;
+  font-family: var(--font-main);
+  font-size: 1.8rem;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background-color: var(--color-green2);
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+
+.task{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 16px;
+  min-width: 310px;
+  border-radius: 8px;
+  background-color: var(--color-green-dark);
+}
+
+.icons{
+  display: flex;
+}
+
+.task-text{
+  padding-right: 10px;
+  font-size: 1.4rem;
+  font-family: var(--font-auxiliar);
+  color: #fff;
+}
+
+i{
+  padding: 5px 10px;
+  color: var(--color-green-light);
+  font-size: 2.4rem;
+  border-left: 1px solid #ABB4AD;
+}
+
+footer{
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+a{
+  padding: 10px;
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: #fff;
+  border-radius: 2px;
+  border: 1px solid #fff;
+}

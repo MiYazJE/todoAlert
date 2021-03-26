@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TodoAlert</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/625fc00c69.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+  <header>
+    <h1>TodoAlert</h1>
+  </header>
+
+  <main>
+    <div class="hide" id="error">
+      ¡Por favor ingrese una tarea!
+    </div>
+    <input type="text" id="input-task">
+    <button id="add-task">Añadir tarea</button>
+    
+    <div id="tasks">
+      <div class="task">
+        <p class="task-text">Escribe algo y dale en añadir tarea</p>
+        <div class="icons"> 
+          <i class="far fa-check-circle"></i>
+          <i class="fas fa-pen"></i>
+          <i class="fas fa-trash"></i>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer><a href="https://twitter.com/carandev" target="_blank">@carandev</a></footer>
+  
+  <script src="index.js"></script>
+</body>
+</html>
