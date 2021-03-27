@@ -2,8 +2,6 @@ const addTask = document.getElementById("add-task");
 const input = document.getElementById("input-task");
 const error = document.getElementById("error");
 const tasks = document.getElementById("tasks");
-const icons = document.getElementsByClassName("icons");
-let i = 1;
 
 function addTaskFunc(){
 
@@ -17,24 +15,25 @@ function addTaskFunc(){
     
     tasks.innerHTML += 
     `
-    <div class="task">
+    <div class="task"">
       <p class="task-text">${input.value}</p>
       <div class="icons">
         <i class="far fa-check-circle"></i>
         <i class="fas fa-pen"></i>
+        <i class="fas fa-trash" onclick="removeTask()"></i>
       </div>
     </div>
     `
-    const iconDelete = document.createElement("i");
-    iconDelete.classList.add("fas", "fa-trash");
-    icons[i++].append(iconDelete);
-
-    iconDelete.addEventListener("click", () => console.log("Eliminando"));
-
     input.value = "";
 
   }
 }
+
+function removeTask(){
+  console.log("Eliminando ...");
+  
+}
+
 addTask.addEventListener("click", addTaskFunc);
 document.addEventListener("keyup", (e) => {
   if (e.key === "Enter"){ 

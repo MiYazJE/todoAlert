@@ -24,12 +24,12 @@
     <button id="add-task">Añadir tarea</button>
     
     <div id="tasks">
-      <div class="task">
+      <div class="task" data-id="0">
         <p class="task-text">Escribe algo y dale en añadir tarea</p>
         <div class="icons"> 
           <i class="far fa-check-circle"></i>
           <i class="fas fa-pen"></i>
-          <i class="fas fa-trash"></i>
+          <i class="fas fa-trash" onclick="removeTask()"></i>
         </div>
       </div>
     </div>
