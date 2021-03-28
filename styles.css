@@ -53,16 +53,12 @@ h1{
   background-color: #E75656;
 }
 
-.hide{
-  display: none;
-}
-
 #input-task{
-  width: 80%;
+  min-width: 310px;
   height: 18px;
   max-width: 400px;
   padding: 10px;
-  margin-bottom: 16px;
+  margin-top: 5px;
   border: none;
   background-color: var(--color-green-light);
   border-radius: 8px;
@@ -70,10 +66,18 @@ h1{
   color: var(--color-brown);
 }
 
-#add-task{
-  padding: 10px 50px;
-  margin-bottom: 40px;
+.form{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-width: 310px;
+}
+
+.button{
+  padding: 10px 10px;
   margin-left: 16px;
+  margin-top: 5px;
   font-family: var(--font-main);
   font-size: 1.8rem;
   letter-spacing: 0.02em;
@@ -84,15 +88,42 @@ h1{
   outline: none;
 }
 
+.edit{
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  top: 50vh;
+  padding: 10px;
+  max-width: 320px;
+  background-color: var(--color-green-dark);
+  border-radius: 8px;
+  border: 1px solid #fff;
+}
+
+#edit-input{
+
+  width: 80%;
+  height: 18px;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: none;
+  background-color: var(--color-green-light);
+  border-radius: 8px;
+  outline: none;
+  color: var(--color-brown);
+}
+
+.hide{
+  display: none;
+}
 
 .task{
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  margin-left: 8px;
-  margin-right: 8px;
-  margin-bottom: 16px;
+  margin: 15px 8px;
   min-width: 310px;
   border-radius: 8px;
   background-color: var(--color-green-dark);
