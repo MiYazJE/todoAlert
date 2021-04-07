@@ -23,32 +23,25 @@
     </div>
 
     <div class="form">
-      <input type="text" id="input-task">
-      <button id="add-task" class="button" onclick="addTaskFunc()">Añadir tarea</button>
+      <input type="text" id="input-task" placeholder="Escribe la tarea">
+      <button id="add-task" class="button">Añadir tarea</button>
     </div>
 
     <div id="edit" class="hide edit">
 
       <input type="text" id="edit-input">
       <button id="edit-agree" class="button">Aceptar</button>
-      <button onclick="editCancel()" class="button">Cancelar</button>
+      <button id="edit-Cancel" class="button">Cancelar</button>
 
     </div>
     
     <div id="tasks"> 
-      <div class="task">
-        <p class="task-text">Escribe algo y dale en añadir tarea</p>
-        <div class="icons"> 
-          <i class="far fa-check-circle" onclick="checkTask()"></i>
-          <i class="fas fa-pen" id="0" onclick="editTask(id)"></i>
-          <i class="fas fa-trash" id="0" onclick="removeTask(id)"></i>
-        </div>
-      </div>
+      
     </div>
   </main>
 
   <footer><a href="https://twitter.com/carandev" target="_blank">@carandev</a></footer>
   
-  <script src="index.js"></script>
+  <script src="index2.js"></script>
 </body>
 </html>

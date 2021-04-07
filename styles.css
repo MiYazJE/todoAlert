@@ -140,11 +140,15 @@ h1{
   color: #fff;
 }
 
+.line-through{
+
+  text-decoration: line-through;
+}
+
 i{
   padding: 5px 10px;
   color: var(--color-green-light);
   font-size: 2.4rem;
-  border-left: 1px solid #ABB4AD;
 }
 
 footer{
