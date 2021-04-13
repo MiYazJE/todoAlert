@@ -1,47 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TodoAlert</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/625fc00c69.js" crossorigin="anonymous"></script>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Alert</title>
 
-</head>
-<body>
+    <link rel="stylesheet" href="./styles.css">
 
-  <header>
-    <h1>TodoAlert</h1>
-  </header>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/625fc00c69.js" crossorigin="anonymous"></script>
 
-  <main>
+  </head>
+  <body>
 
-    <div class="hide" id="error">
-      ¡Por favor ingrese una tarea!
-    </div>
+    <h1>Todo Alert</h1>
 
-    <div class="form">
-      <input type="text" id="input-task" placeholder="Escribe la tarea">
-      <button id="add-task" class="button">Añadir tarea</button>
-    </div>
+    <div class="error hide">¡ Debes escribir un tarea !</div>
 
-    <div id="edit" class="hide edit">
+    <form id="form">
+      <input type="text" placeholder="Escribe el nombre de la tarea" autofocus>
+      <button type="submit">Añadir tarea</button>
+    </form>
 
-      <input type="text" id="edit-input">
-      <button id="edit-agree" class="button">Aceptar</button>
-      <button id="edit-Cancel" class="button">Cancelar</button>
+    <div id="taskContainer" class="tasks"></div>
 
-    </div>
-    
-    <div id="tasks"> 
-      
-    </div>
-  </main>
+    <template id="template">
+      <div class="task">
+	<p class="textTask">First Task</p>
+	<div class="icons">
+	  <i class="far fa-check-circle" onclick="checkTask(dataset.id)" role="button"></i>
+	  <i class="fas fa-trash" onclick="deleteTask(dataset.id)" role="button"></i>
+	</div>
+      </div>
+    </template>
 
-  <footer><a href="https://twitter.com/carandev" target="_blank">@carandev</a></footer>
-  
-  <script src="index2.js"></script>
-</body>
+    <script src="./app.js"></script>
+  </body>
 </html>
