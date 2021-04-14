@@ -2,13 +2,25 @@ const form = document.getElementById("form")
 const template = document.getElementById("template").content
 const taskContainer = document.getElementById("taskContainer")
 const fragment = document.createDocumentFragment()
-const tasks = []
+let tasks = []
 
-document.addEventListener("DOMContentLoaded", () => showTask())
+document.addEventListener("DOMContentLoaded", () => {
+
+  
+  if (localStorage.getItem('tasks')) {
+
+    tasks = JSON.parse(localStorage.getItem('tasks'))
+
+  }
+
+  showTask()
+
+})
 
 form.addEventListener("submit", e => {
 
   e.preventDefault()
+
   addTasks(e)
 
 })
@@ -35,6 +47,8 @@ const addTasks = e =>{
 }
 
 const showTask = () =>{
+
+  localStorage.setItem("tasks", JSON.stringify(tasks))
 
   if (tasks.length === 0){
     taskContainer.innerHTML = `
