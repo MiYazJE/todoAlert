@@ -1,106 +1,113 @@
-const form = document.getElementById("form")
-const template = document.getElementById("template").content
-const taskContainer = document.getElementById("taskContainer")
-const fragment = document.createDocumentFragment()
-let tasks = []
+const form = document.getElementById("form");
+const template = document.getElementById("template").content;
+const taskContainer = document.getElementById("taskContainer");
+const fragment = document.createDocumentFragment();
+let tasks = [];
 
 document.addEventListener("DOMContentLoaded", () => {
-
-  
-  if (localStorage.getItem('tasks')) {
-
-    tasks = JSON.parse(localStorage.getItem('tasks'))
-
+  if (localStorage.getItem("tasks")) {
+    tasks = JSON.parse(localStorage.getItem("tasks"));
   }
 
-  showTask()
+  showTask();
+});
 
-})
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-form.addEventListener("submit", e => {
+  addTasks(e);
+});
 
-  e.preventDefault()
+const addTasks = (e) => {
+  let inputText = e.target[0].value;
 
-  addTasks(e)
+  if (inputText.trim() == "") {
+    document.querySelector(".error").classList.remove("hide");
+    return;
+  } else {
+    document.querySelector(".error").classList.add("hide");
+  }
 
-})
-
-const addTasks = e =>{
-
-  let inputText = e.target[0].value
-
-  if (inputText.trim() == ""){
-    document.querySelector(".error").classList.remove("hide")
-    return
-  } else {document.querySelector(".error").classList.add("hide")}
-    
   const task = {
     id: Date.now(),
     text: inputText,
-    checked: false
-  }
+    checked: false,
+  };
 
-  form.reset()
-  tasks.unshift(task)
-  showTask()
+  form.reset();
+  tasks.unshift(task);
+  showTask();
+};
 
-}
+const showTask = () => {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 
-const showTask = () =>{
-
-  localStorage.setItem("tasks", JSON.stringify(tasks))
-
-  if (tasks.length === 0){
+  if (tasks.length === 0) {
     taskContainer.innerHTML = `
     <div class="clearTask">No tienes tareas pendientes</div>
-    `
-    return
+    `;
+    return;
   }
 
-  taskContainer.innerHTML = ""
+  taskContainer.innerHTML = "";
 
-  tasks.forEach(element => {
+  tasks.forEach((element) => {
+    const templateCopy = template.cloneNode(true);
 
-    const templateCopy = template.cloneNode(true)
+    templateCopy.querySelector("p").textContent = element.text;
+    templateCopy.querySelector("p").dataset.id = element.id;
+    templateCopy.querySelectorAll("i")[0].dataset.id = element.id;
+    templateCopy.querySelectorAll("i")[1].dataset.id = element.id;
 
-    templateCopy.querySelector("p").textContent = element.text
-    templateCopy.querySelector("p").dataset.id = element.id
-    templateCopy.querySelectorAll("i")[0].dataset.id = element.id
-    templateCopy.querySelectorAll("i")[1].dataset.id = element.id
+    if (element.checked === true) {
+      templateCopy.querySelector("p").classList.add("check");
 
-    if (element.checked === true){
+      templateCopy.querySelector("i").classList.replace("far", "fas");
 
-      templateCopy.querySelector("p").classList.add("check")
-      
-      templateCopy.querySelector("i").classList.replace("far", "fas")
-
-      templateCopy.querySelector("p").parentElement.classList.add("bgGreen")
-
+      templateCopy.querySelector("p").parentElement.style.backgroundColor = "#3c6e71";
     }
 
-    fragment.appendChild(templateCopy)
+    fragment.appendChild(templateCopy);
+  });
 
-  })
+  taskContainer.appendChild(fragment);
+};
 
-  taskContainer.appendChild(fragment)
+const deleteTask = (e) => {
+  const elementDelete = tasks.findIndex((task) => task.id == e);
+
+  tasks.splice(elementDelete, 1);
+
+  showTask();
+};
+
+const checkTask = (e) => {
+  const elementCheck = tasks.findIndex((task) => task.id == e);
+
+  tasks[elementCheck].checked = !tasks[elementCheck].checked;
+
+  showTask();
+};
+
+const editTask = e => {
+
+  const elementEdit = tasks.findIndex(task => task.id == e);
+
+  document.getElementById("windowEdit").classList.remove("hide");
+
+  document.getElementById("inputEdit").value = tasks[elementEdit].text;
+
+  document.getElementById("windowEdit").addEventListener("submit", e => {
+
+    e.preventDefault();
+
+    tasks[elementEdit].text = document.getElementById("inputEdit").value;
+    document.getElementById("windowEdit").classList.add("hide");
+
+    showTask();
+
+  });
+
+  document.getElementById("editCancel").addEventListener("click", () => {document.getElementById("windowEdit").classList.add("hide");})
 
 }
-
-const deleteTask = e => {
-  const elementDelete = tasks.findIndex(task => task.id == e)
-
-  tasks.splice(elementDelete, 1)
-
-  showTask()
-}
-
-const checkTask = e => {
-
-  const elementCheck = tasks.findIndex(task => task.id == e)
-
-  tasks[elementCheck].checked = !tasks[elementCheck].checked
-
-  showTask()
-
-}
-

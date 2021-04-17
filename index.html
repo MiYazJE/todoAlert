@@ -25,11 +25,23 @@
 
     <div id="taskContainer" class="tasks"></div>
 
+    <form id="windowEdit" class="hide windowEdit">
+      <h3>Edita la tarea</h3>
+      <input type="text" id="inputEdit">
+
+      <div>
+        <button id="editAgree" type="submit">Aceptar</button>
+        <button id="editCancel">Cancelar</button>
+      </div>
+
+    </form>
+
     <template id="template">
       <div class="task">
 	<p class="textTask">First Task</p>
 	<div class="icons">
 	  <i class="far fa-check-circle" onclick="checkTask(dataset.id)" role="button"></i>
+    <i class="fas fa-pen" onclick="editTask(dataset.id)" role="button"></i>
 	  <i class="fas fa-trash" onclick="deleteTask(dataset.id)" role="button"></i>
 	</div>
       </div>
