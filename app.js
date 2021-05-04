@@ -2,6 +2,7 @@ const form = document.getElementById("form");
 const template = document.getElementById("template").content;
 const taskContainer = document.getElementById("taskContainer");
 const fragment = document.createDocumentFragment();
+const $windowEdit = document.getElementById("windowEdit");
 let tasks = [];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -89,25 +90,25 @@ const checkTask = (e) => {
   showTask();
 };
 
-const editTask = e => {
+const editTask = id => {
+  const elementEdit = tasks.findIndex(task => task.id == id);
 
-  const elementEdit = tasks.findIndex(task => task.id == e);
-
-  document.getElementById("windowEdit").classList.remove("hide");
+  $windowEdit.classList.remove("hide");
 
   document.getElementById("inputEdit").value = tasks[elementEdit].text;
 
-  document.getElementById("windowEdit").addEventListener("submit", e => {
-
+  function editTaskListener(e) {
     e.preventDefault();
 
     tasks[elementEdit].text = document.getElementById("inputEdit").value;
-    document.getElementById("windowEdit").classList.add("hide");
+    $windowEdit.classList.add("hide");
 
     showTask();
+    $windowEdit.removeEventListener('submit', editTaskListener);
+  }
 
-  });
+  $windowEdit.addEventListener("submit", editTaskListener);
 
-  document.getElementById("editCancel").addEventListener("click", () => {document.getElementById("windowEdit").classList.add("hide");})
-
+  document.getElementById("editCancel")
+    .addEventListener("click", () => $windowEdit.classList.add("hide"))
 }
