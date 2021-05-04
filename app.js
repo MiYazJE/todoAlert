@@ -59,6 +59,7 @@ const showTask = () => {
     templateCopy.querySelector("p").dataset.id = element.id;
     templateCopy.querySelectorAll("i")[0].dataset.id = element.id;
     templateCopy.querySelectorAll("i")[1].dataset.id = element.id;
+    templateCopy.querySelectorAll("i")[2].dataset.id = element.id;
 
     if (element.checked === true) {
       templateCopy.querySelector("p").classList.add("check");
